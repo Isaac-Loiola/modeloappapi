@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
+ 
 @Injectable({
   providedIn: 'root',
 })
@@ -12,11 +13,14 @@ export class Vendas {
   operacao(dados:any){
     return this.http.post(this.url + '/api.php', dados);
     // return this.http.post(this.url, dados);
-  }
+  // }
 
-  listarProdutos(dados:any){
-    return this.http.get(this.url + '/api-produto.php', dados);
-  }
+  // listar(dados:any){
+  //   return this.http.get(this.url + '/api-produto.php', dados);
+  // }
 
+  // alterar(dados:any){  
+  // return this.http.post(this.url + '/api.php', dados);
+ }
   
 }

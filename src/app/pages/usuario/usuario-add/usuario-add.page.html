@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>usuario-add</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form  [formGroup]="form" (ngSubmit)="salvar()">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input formControlName="senha" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nível</ion-label>
+      <ion-select formControlName="id_nivel">
+        <ion-select-option value="1">Administrador</ion-select-option>
+        <ion-select-option value="2">Caixa</ion-select-option>
+        <ion-select-option value="3">Atendente</ion-select-option>
+        <ion-select-option value="4">Estoquista</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="form.invalid">Inserir</ion-button>
+  </form>
+</ion-content>

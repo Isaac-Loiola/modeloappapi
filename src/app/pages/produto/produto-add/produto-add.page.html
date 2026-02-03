@@ -1,13 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>produto-add</ion-title>
+    <ion-title>Produto-add</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">produto-add</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="form" ((submit))="salvar()">
+    <ion-item>
+      <ion-label position="floating">Código de Barrasa</ion-label>
+      <ion-input type="text" formControlName="codigoBarras"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input type="text" formControlName="descricao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Valor Unitário</ion-label>
+      <ion-input type="number" step="0.01" formControlName="valorUnit"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Unidade de Venda</ion-label>
+      <ion-input type="text" formControlName="unidadeVenda"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-select formControlName="idCategoria">
+        <ion-select-option value="1">Missangas & Confecção de Joias</ion-select-option>
+        <ion-select-option value="2">Decoração de Teciddos</ion-select-option>
+        <ion-select-option value="3">Tricô & Suprimentos de Crochê</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Estoque Minimo</ion-label>
+      <ion-input type="text" formControlName="estoqueMin"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Classe de desconto</ion-label>
+      <ion-input type="number" step="0.01" formControlName="classeDesconto"></ion-input>
+    </ion-item>
+   
+    <ion-button expand="block" type="submit" [disabled]="form.invalid">Adicionar</ion-button>
+  </form>
 </ion-content>

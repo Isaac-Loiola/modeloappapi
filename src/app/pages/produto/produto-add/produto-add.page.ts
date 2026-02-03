@@ -7,6 +7,7 @@ import { Vendas } from 'src/app/services/vendas';
   selector: 'app-produto-add',
   templateUrl: './produto-add.page.html',
   styleUrls: ['./produto-add.page.scss'],
+  standalone: false
 })
 export class ProdutoAddPage implements OnInit {
   // A formGroup must have a formBuilder

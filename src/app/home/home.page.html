@@ -12,24 +12,20 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Sistema Comercial
+      </ion-title>
+      <ion-button slot="end">
+        <ion-button (click)="logout()">Sair</ion-button>
+      </ion-button>
+    </ion-toolbar>
+    <ion-list>
+      <ion-item routerLink="/usuario-add">Cadastrar Usuário</ion-item>
+      <ion-item routerLink="/usuario-list">Listar Usuário</ion-item>
+      <ion-item routerLink="/clientes">Clientes</ion-item>
+      <ion-item routerLink="/produtos">Produtos</ion-item>
+      <ion-item routerLink="/pedidos">Pedidos</ion-item>
+    </ion-list>
 
-  <div id="container">
-    <ion-card *ngIf="pedido">
-      <ion-card-header>
-        <ion-card-title>Pedido #123</ion-card-title>
-        <ion-card-subtitle></ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <p><strong>Usuario:</strong> {{pedido.usuario_id}} </p>
-        <p><strong>Cliente:</strong> {{pedido.cliente_id}} </p>
-        <p><strong>Data:</strong> {{pedido.data}} </p>
-        <p><strong>Status:</strong> R$ {{pedido.status}}</p>
-        <p><strong>Desconto:</strong> R$ {{pedido.desconto}}</p>
-      </ion-card-content>
-    </ion-card>
-    
-    <div>
-      <p (click)="Listar()">Listar Pedidos</p>
-    </div>
-  </div>
 </ion-content>

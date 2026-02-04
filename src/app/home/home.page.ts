@@ -9,24 +9,27 @@ import { lastValueFrom } from 'rxjs';
   standalone: false,
 })
 export class HomePage {
-  public pedido: any = null
-  mensagem = ''
+
   constructor(private api : Vendas,) {}
 
   ngOnInit(){
-    console.log('jhown')
+    
   }
 
-  async Listar(){
-    // listar peidos
-    const pedidosLista = {
-      requicisao: 'pedido-listar',
-      id_pedido: 10053
-    }
+  // async Listar(){
+  //   // listar peidos
+  //   const pedidosLista = {
+  //     requicisao: 'pedido-listar',
+  //     id_pedido: 10053
+  //   }
 
-    const resposta : any = await lastValueFrom(this.api.operacao(pedidosLista));
-    this.mensagem = resposta.msg;
-    this.pedido = resposta.data[0];
+  //   const resposta : any = await lastValueFrom(this.api.operacao(pedidosLista));
+  //   this.mensagem = resposta.msg;
+  //   this.pedido = resposta.data[0];
+
+  // }
+
+  logout(){
 
   }
 

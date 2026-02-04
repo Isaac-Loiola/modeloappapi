@@ -12,6 +12,7 @@ import { Vendas } from 'src/app/services/vendas';
 })
 export class UsuarioAddPage implements OnInit {
   form!: FormGroup;
+  niveis: any[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +27,7 @@ export class UsuarioAddPage implements OnInit {
       senha: ['', Validators.required],
       id_nivel: ['', Validators.required]
     });
+    this.listarNiveis();
   }
 
   salvar(){
@@ -48,6 +50,16 @@ export class UsuarioAddPage implements OnInit {
       // position: 'bottom',
     });
     t.present();
+  }
+
+  listarNiveis(){
+    this.api.operacao({
+      requisicao: "nivel-listar"
+    }).subscribe((res:any) => {
+      if(res.success){
+        this.niveis = res.data;
+      }
+    });
   }
 
 }

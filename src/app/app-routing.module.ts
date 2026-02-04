@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/usuario/usuario-list/usuario-list.module').then( m => m.UsuarioListPageModule)
   },
   {
-    path: 'usuario-edit',
+    path: 'usuario-edit/:id',
     loadChildren: () => import('./pages/usuario/usuario-edit/usuario-edit.module').then( m => m.UsuarioEditPageModule)
   },
 ];

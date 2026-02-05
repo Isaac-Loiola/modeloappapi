@@ -1,6 +1,10 @@
 import { Component, Version } from '@angular/core';
 import { Vendas } from '../services/vendas';
 import { lastValueFrom } from 'rxjs';
+import { ToastButton, ToastController } from '@ionic/angular';
+import { ToastSwipeGestureDirection } from '@ionic/core';
+import { Auth } from '../services/auth';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +14,12 @@ import { lastValueFrom } from 'rxjs';
 })
 export class HomePage {
 
-  constructor(private api : Vendas,) {}
+  constructor(
+    private api : Vendas,
+    private toast: ToastController,
+    private auth: Auth,
+    private router: Router
+  ) {}
 
   ngOnInit(){
     
@@ -30,7 +39,8 @@ export class HomePage {
   // }
 
   logout(){
-
+    this.auth.logout();
+    this.router.navigateByUrl('/login', {replaceUrl: true});
   }
 
 }

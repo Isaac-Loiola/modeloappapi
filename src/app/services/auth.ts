@@ -14,25 +14,23 @@ export class Auth {
       operacao: "login",
       email,
       senha
-    }).subscribe((res:any) =>{
-
     });
   
   }
 
   logout(){
-
+    localStorage.removeItem('usuario'); 
   }
 
-  setUsuario(){
-
+  setUsuario(dados:any){
+    localStorage.setItem('usuario', JSON.stringify(dados));
   }
 
   getUsuario(){
-
+    return JSON.parse(localStorage.getItem('usuario') || 'null');
   }
 
   isLogado() : boolean{
-    return false;
+    return !!this.getUsuario();
   }
 }

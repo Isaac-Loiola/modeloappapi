@@ -33,7 +33,8 @@ export class LoginPage implements OnInit {
     this.auth.login(email, senha).subscribe((res:any) =>{
       if(res.success){
         this.auth.setUsuario(res.result);
-        this.router.navigateByUrl('/home', {replaceUrl: true});
+        this.router.navigateByUrl('/splash', {replaceUrl: true});
+        // this.router.navigateByUrl('/home', {replaceUrl: true});
       }
       else{
         this.mensagem(res.msg || 'Falha no login');

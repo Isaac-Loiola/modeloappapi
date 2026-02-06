@@ -11,7 +11,7 @@ export class Auth {
 
   login(email: string, senha: string){
     return this.api.operacao({
-      operacao: "login",
+      requisicao: "login",
       email,
       senha
     });

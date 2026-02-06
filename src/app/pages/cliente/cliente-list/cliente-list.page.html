@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>cliente-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngFor="let c of clientes">
+    <ion-label>
+      <h2>{{c.nome}}</h2>
+      <p>{{c.email}} <br> {{c.cpf}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

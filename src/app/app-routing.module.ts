@@ -35,27 +35,42 @@ const routes: Routes = [
   },
   {
     path: 'usuario-list',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/usuario/usuario-list/usuario-list.module').then( m => m.UsuarioListPageModule)
   },
   {
     path: 'usuario-edit/:id',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/usuario/usuario-edit/usuario-edit.module').then( m => m.UsuarioEditPageModule)
   },
   {
     path: 'login',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'splash',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
   },
   {
     path: 'cliente-list',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/cliente/cliente-list/cliente-list.module').then( m => m.ClienteListPageModule)
   },
   {
     path: 'cliente-edit',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/cliente/cliente-edit/cliente-edit.module').then( m => m.ClienteEditPageModule)
+  },
+  {
+    path: 'produto-list',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/produto/produto-list/produto-list.module').then( m => m.ProdutoListPageModule)
+  },
+  {
+    path: 'produto-detalhe',
+    loadChildren: () => import('./pages/produto/produto-detalhe/produto-detalhe.module').then( m => m.ProdutoDetalhePageModule)
   },
 ];
 

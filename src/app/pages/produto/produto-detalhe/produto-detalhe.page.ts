@@ -1,6 +1,6 @@
 import { ProdutoAddPage } from './../produto-add/produto-add.page';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Vendas } from 'src/app/services/vendas';
@@ -15,7 +15,7 @@ export class ProdutoDetalhePage implements OnInit {
   id!: number;
   form!: FormGroup;
   categorias: any[] = [];
-  protudo: any[] = [];
+  produto: any[] = [];
 
   constructor(
     private route: ActivatedRoute, // rota para pegar valor
@@ -26,15 +26,43 @@ export class ProdutoDetalhePage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.listaCategorias();
     this.buscaProduto(this.id);
+
+    this.form = this.fb.group({
+      descricao: [0, Validators.required],
+      valor_unit: [0, Validators.required],
+      unidade_venda: [''],
+      categoria_id: [0],
+      estoque_minimo: [''],
+      classe_desconto: [0, Validators.required],
+      imagem: [''],
+      cod_barras: [''],
+      quantidade: 0,
+      data_ultimo_movimento:  ['']
+    });
+    this.form.patchValue(this.produto)
+
+    this.listaCategorias();
+    this.carregar();
+  }
+
+  carregar(){
+    this.api.operacao({
+      requisicao: 'produto-listar',
+      id: this.id
+    }).subscribe((res:any)=> {
+      if(res.success){
+        this.form.patchValue(res.data);
+      }
+    });
   }
 
     buscaProduto(id:number){
       this.api.operacao({requisicao: 'produto-listar', id: this.id}).subscribe((res:any)=>{
         if(res.success){
-          this.protudo = res.data;
+          this.produto = res.data;
         }
       })
     }

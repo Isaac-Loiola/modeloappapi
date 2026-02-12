@@ -69,7 +69,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/produto/produto-list/produto-list.module').then( m => m.ProdutoListPageModule)
   },
   {
-    path: 'produto-detalhe',
+    path: 'produto-detalhe/:id',
     loadChildren: () => import('./pages/produto/produto-detalhe/produto-detalhe.module').then( m => m.ProdutoDetalhePageModule)
   },
 ];

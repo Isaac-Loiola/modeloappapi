@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vendas } from 'src/app/services/vendas';
 import { addIcons } from 'ionicons';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-produto-list',

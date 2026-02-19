@@ -6,12 +6,25 @@ import { Injectable, NgModule } from '@angular/core';
   providedIn: 'root',
 })
 export class Vendas {
-  private url = "http://10.91.47.129/modelo-api";
+  private url = "https://sublimegrace.com.br/modelo-api";
 
-  constructor(private http: HttpClient){}
+  constructor(
+    private http: HttpClient
+  ){}
   // saída para o primeiro endpoint
   operacao(dados:any){
     return this.http.post(this.url + '/api.php', dados);
  }
+
+  //  Upload de iamgem
+  uploadImagem(idProduto:number, arquivo:File){
+    const formData = new FormData();
+    formData.append('requisicao', 'produto-upload-imagem');
+    formData.append('id_produto', idProduto.toString());
+    formData.append('imagem', arquivo);
+    
+    return this.http.post(this.url + '/api.php', formData);
+
+  }
   
 }

@@ -38,4 +38,10 @@
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.ACCESS" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+
 </manifest>

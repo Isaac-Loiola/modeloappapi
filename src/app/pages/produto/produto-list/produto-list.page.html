@@ -1,15 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Produtos</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button>
-        <ion-icon name="arrow-back-sharp"></ion-icon>
-      </ion-back-button>
-    </ion-buttons>
+    <ion-searchbar
+      placeholder="Buscar produtos..."
+      [debounce]="500"
+      (ionInput)="buscar($event)"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresher)="atualizar($event)">
+    <ion-refresher-content
+      pullingText="Puxe para atualizar"
+      refreshingSpinner="circles"
+      refreshingText="Atualizando..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
+
   <!-- lista fake (Skeleton) -->
   <ion-list *ngIf="produtos.length == 0">
     <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
@@ -41,4 +51,16 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+
+  <ion-infinite-scroll
+    threshold="100px"
+    (ionInfinite)="carregar($event)"
+  >
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando mais produtos"
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>

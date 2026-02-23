@@ -6,7 +6,7 @@ import { Injectable, NgModule } from '@angular/core';
   providedIn: 'root',
 })
 export class Vendas {
-  private url = "https://sublimegrace.com.br/model-api";
+  private url = "https://sublimegrace.com.br/modelo-api";
 
   constructor(
     private http: HttpClient
